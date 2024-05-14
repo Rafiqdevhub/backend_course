@@ -1,7 +1,7 @@
 const express = require('express');
 const connectDB = require('./config/DBConnection');
 const userRoutes = require('./routes/userRoute');
-const contacRoutes= require('./routes/contactRoutes')
+const contactRoutes= require('./routes/contactRoutes')
 
 const errorHandler = require('./middleware/errorHandlering')
 
@@ -16,11 +16,11 @@ connectDB();
 
 // Middleware
 app.use(express.json());
+app.use(cookieParser)
 
 // Routes
 app.use('/api', userRoutes);
-
-app.use('/api/contact', contacRoutes)
+app.use('/api/contact', contactRoutes)
 app.use('/api/users', userRoutes)
 app.use(errorHandler)
 
